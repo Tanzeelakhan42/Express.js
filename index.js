@@ -10,21 +10,24 @@ const PORT = 8000;
 app.get("/api/data", (req, res) => {
   return res.json(data);
 });
-app.get("/api/data/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const user = data.find((item) => item.id === id);
-  return res.json(user);
-});
+app
+  .route("/api/data/:id")
+  .get((req, res) => {
+    const id = Number(req.params.id);
+    const user = data.find((item) => item.id === id);
+    return res.json(user);
+  })
+  .patch((req, res) => {
+    //to do:Edit the user with id
+    return res.json({ status: "pending" });
+  })
+  .delete((req, res) => {
+    //to do:Delete the user with id
+    return res.json({ status: "pending" });
+  });
 app.post("/api/data", (req, res) => {
   //to do:Create new user
   return res.json({ status: "pending" });
 });
-app.patch("/api/data/:id", (req, res) => {
-  //to do:Edit the user with id
-  return res.json({ status: "pending" });
-});
-app.delete("/api/data/:id", (req, res) => {
-  //to do:Delete the user with id
-  return res.json({ status: "pending" });
-});
+
 app.listen(PORT, () => console.log(`Server started at port: ${PORT}`));

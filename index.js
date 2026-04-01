@@ -15,4 +15,16 @@ app.get("/api/data/:id", (req, res) => {
   const user = data.find((item) => item.id === id);
   return res.json(user);
 });
+app.post("/api/data", (req, res) => {
+  //to do:Create new user
+  return res.json({ status: "pending" });
+});
+app.patch("/api/data/:id", (req, res) => {
+  //to do:Edit the user with id
+  return res.json({ status: "pending" });
+});
+app.delete("/api/data/:id", (req, res) => {
+  //to do:Delete the user with id
+  return res.json({ status: "pending" });
+});
 app.listen(PORT, () => console.log(`Server started at port: ${PORT}`));

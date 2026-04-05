@@ -13,12 +13,12 @@ app.get("/data", (req, res) => {
 app.get("/api/data", (req, res) => {
   return res.json(data);
 });
+
 app.post("/api/data", (req, res) => {
   //Todo: Create new user
   const body = req.body;
-  console.log(body);
-
-  return res.json({ status: "pending" });
+  console.log("Body =", body);
+  return res.json({ status: "success" });
 });
 
 app
@@ -28,14 +28,12 @@ app
     const user = data.find((item) => item.id === id);
     return res.json(user);
   })
-
   .patch((req, res) => {
-    //Todo:Edit the user with id
+    //Todo: Edit user with id
     return res.json({ status: "pending" });
   })
   .delete((req, res) => {
-    //Todo:Delete the user with id
+    //Todo: Delete user with id
     return res.json({ status: "pending" });
   });
-
 app.listen(PORT, () => console.log(`Server started at port: ${PORT}`));

@@ -1,5 +1,6 @@
 const express = require("express");
 const data = require("./MOCK_DATA.json");
+const fs = require("fs");
 const app = express();
 const PORT = 8000;
 
@@ -18,7 +19,9 @@ app.post("/api/data", (req, res) => {
   //Todo: Create new user
   const body = req.body;
   console.log("Body =", body);
-  return res.json({ status: "success" });
+  fs.writeFile("./MOCK_DATA.json", JSON.stringify(data), (err) => {
+    return res.json({ status: "pending" });
+  });
 });
 
 app

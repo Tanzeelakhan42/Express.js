@@ -19,8 +19,9 @@ app.post("/api/data", (req, res) => {
   //Todo: Create new user
   const body = req.body;
   console.log("Body =", body);
+  data.push({ id: data.length + 1, ...body });
   fs.writeFile("./MOCK_DATA.json", JSON.stringify(data), (err) => {
-    return res.json({ status: "pending" });
+    return res.json({ status: "success", id: data.length });
   });
 });
 

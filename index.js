@@ -34,7 +34,18 @@ app
   })
   .patch((req, res) => {
     //Todo: Edit user with id
-    return res.json({ status: "pending" });
+    const body = req.body;
+    console.log(body);
+    const id = Number(req.params.id);
+
+    const user = data.find((item) => item.id === id);
+    if (!user) {
+      return res.json({ status: "User not found" });
+    }
+    Object.assign(user, body);
+    fs.writeFile("./MOCK_DATA.json", JSON.stringify(data), (err) => {
+      return res.json({ status: "success", message: "User updated" });
+    });
   })
   .delete((req, res) => {
     //Todo: Delete user with id

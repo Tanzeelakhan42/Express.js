@@ -11,6 +11,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  console.log("Hello from Middleware 2");
+  next();
+});
+
 app.get("/data", (req, res) => {
   const html = `<ul>${data.map((item) => `<li>${item.first_name}</li>`).join("")}</ul>`;
   res.send(html);

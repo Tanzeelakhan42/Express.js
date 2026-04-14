@@ -8,11 +8,12 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   console.log("Hello from Middleware 1");
+  req.myUserName = "tanzeelakhan42";
   next();
 });
 
 app.use((req, res, next) => {
-  console.log("Hello from Middleware 2");
+  console.log("Hello from Middleware 2", req.myUserName);
   next();
 });
 
@@ -21,6 +22,7 @@ app.get("/data", (req, res) => {
   res.send(html);
 });
 app.get("/api/data", (req, res) => {
+  console.log(`Hello from ${req.myUserName}`);
   res.json(data);
 });
 app.post("/api/data/", (req, res) => {
